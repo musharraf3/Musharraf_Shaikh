@@ -8,12 +8,13 @@
 </div>
 
 <form action="{% url 'contact_form' %}" method="get">
-    <button type="submit">Create a New Contact</button>
+    <button type="Save">Create a New Contact</button>
 </form>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Contact Name</th>
+      <th>Phone Number</th>
       <th>Email</th>
       <th>Created Time</th>
     </tr>
@@ -26,6 +27,9 @@
         &nbsp;
 
         {{ contact.name }}
+      </td>
+      <td>
+        {{ contact.phone_number}}
       </td>
       <td>
         {{ contact.email}}
