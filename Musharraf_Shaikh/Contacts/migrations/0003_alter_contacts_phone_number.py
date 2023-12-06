@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Contacts', '0002_remove_contacts_description_remove_contacts_is_done_and_more'),
+        ('contacts', '0002_remove_contacts_description_remove_contacts_is_done_and_more'),
     ]
 
     operations = [

@@ -1,81 +1,14 @@
 {% extends "base.html" %}
-
 {% block content %}
+<h1>Create a Contact</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" />
+</form>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form</title>
-    <style>
-        .center-container {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .center-container h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        form label {
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        form input[type=text],
-        form input[type=email],
-        form input[type=tel],
-        form textarea {
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        form input[type=submit] {
-            padding: 10px 20px;
-            background-color: #5cb85c;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-        }
-
-        form input[type=submit]:hover {
-            background-color: #4cae4c;
-        }
-    </style>
-</head>
-<body>
-    <div class="center-container">
-        <h1>Create a Contact</h1>
-        <form method="post">
-            {% csrf_token %}
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="phone">Phone number:</label>
-            <input type="tel" id="phone" name="phone" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="notes">Notes:</label>
-            <textarea id="notes" name="notes" rows="4"></textarea>
-            
-            <input type="submit" value="Save">
-        </form>
-    </div>
-</body>
-</html>
-
+<hr>
+<div class="centered-text" style="color: green;">
+    <h4>&copy; Created by Musharraf Shaikh</h4>
+</div>
 {% endblock content %}

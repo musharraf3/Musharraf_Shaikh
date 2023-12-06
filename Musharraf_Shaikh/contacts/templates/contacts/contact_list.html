@@ -1,21 +1,15 @@
 {% extends "base.html" %}
-
 {% block content %}
-
-<br>
-<br>
 <div class="centered-text" style="color: blue;">
     <h1>Contact Management</h1>
 </div>
-
 <form action="{% url 'contact_form' %}" method="get">
-    <button type="Save">Create a New Contact</button>
+    <button type="submit">Create a New Contact</button>
 </form>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Contact Name</th>
-      <th>Phone Number</th>
       <th>Email</th>
       <th>Created Time</th>
     </tr>
@@ -25,19 +19,20 @@
     <tr>
       <td>
         <a class="icon-link">
-          <i class="bi bi-pencil"></i>
-      </a>
-        &nbsp;
-
-        <a class="icon-link">
-          <i class="bi bi-trash"></i>
+        <a class="icon-link" href="{% url 'contact_detail' contact.pk %}">
+            <i class="bi bi-pencil"></i>
         </a>
+          &nbsp;
+  
+          <a class="icon-link">
+            <i class="bi bi-trash"></i>
+          </a>
         &nbsp;
 
-        {{ contact.name }}
-      </td>
-      <td>
-        {{ contact.phone_number}}
+        <a style="color: black; text-decoration: none;" href="{% url 'contact_detail' contact.pk %}">
+                {{ contact.name }}
+            </a>
+
       </td>
       <td>
         {{ contact.email}}
@@ -45,15 +40,12 @@
       <td>
         {{ contact.created_time}}
       </td>
-
     </tr>
     {% endfor %}
   </tbody>
 </table>
-
 <hr>
 <div class="centered-text" style="color: green;">
     <h4>&copy; Created by Musharraf Shaikh</h4>
 </div>
-
 {% endblock content %}
