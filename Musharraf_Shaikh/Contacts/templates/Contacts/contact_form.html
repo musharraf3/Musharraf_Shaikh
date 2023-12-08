@@ -1,24 +1,64 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Management</title>
+    <style>
+        .center-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
 
-{% block content %}
+        .title {
+            color: rgb(76, 152, 199);
+            margin-bottom: 20px;
+        }
 
-<h1>Create a Contact</h1>
-<div class="centered-text" style="color: blue;">
-    {% if is_creation %}
-        <h1>Create a Contact</h1>
-    {% else %}
-        <h1>Edit Contact</h1>
-    {% endif %}
-</div>
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: rgb(76, 152, 199);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" />
-</form>
-<hr>
-<div class="centered-text" style="color: green;">
-    <h4>&copy; Created by Musharraf Shaikh</h4>
-</div>
-{% endblock content %}
+        .submit-btn:hover {
+            background-color: blue;
+        }
+
+        .footer {
+            text-align: center;
+            color: #6c757d;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-container">
+        <h1 class="title">{{ is_creation|yesno:"Create a Contact,Edit Contact" }}</h1>
+        <form method="post" class="contact-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="{{ is_creation|yesno:'Create Contact,Save Changes' }}" class="submit-btn">
+            <a href="{% url 'contact_list' %}" class="btn btn-primary" style="color: rgb(76, 152, 199);">Cancel</a>
+        </form>
+    </div>
+    <hr>
+    <div class="footer" style="color:rgb(76, 152, 199);">
+        <h4>&copy; Created by Musharraf Shaikh</h4>
+    </div>
+</body>
+</html>
